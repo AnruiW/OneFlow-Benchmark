@@ -31,6 +31,9 @@ def get_parser(parser=None):
     parser.add_argument('--n_embd', type=int, default=768, help='embedding/hidden size')
     parser.add_argument('--n_head', type=int, default=12, help='number of attention head')
     parser.add_argument('--n_layer', type=int, default=12, help='number of layer')
+    parser.add_argument('--embedding_dropout', type=float, default=0.1,help='embedding dropout rate')
+    parser.add_argument('--output_dropout', type=float, default=0.1,help='output dropout rate')
+    parser.add_argument('--attention_dropout', type=float, default=0.1,help='attention dropout rate')
 
     parser.add_argument('--dataset', metavar='PATH', type=str, required=True,
                         help='Input file, directory (utf-8 text, or preencoded .npz files).')
@@ -46,12 +49,6 @@ def get_parser(parser=None):
     parser.add_argument('--optimizer', type=str, default='adam', help='Optimizer. <adam|sgd>.')
     parser.add_argument('--learning_rate', metavar='LR', type=float, default=0.00002,
                         help='Learning rate for Adam')
-    parser.add_argument('--embedding_dropout', type=float, default=0.1,
-                        help='embedding dropout rate')
-    parser.add_argument('--output_dropout', type=float, default=0.1,
-                        help='output dropout rate')
-    parser.add_argument('--attention_dropout', type=float, default=0.1,
-                        help='attention dropout rate')
 
     parser.add_argument("--gpu_num_per_node", type=int, default=1)
     parser.add_argument('--num_nodes', type=int, default=1,
